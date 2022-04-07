@@ -5,6 +5,7 @@ using RedUtils.Math;
 using RLBotDotNet;
 using rlbot.flat;
 using Color = System.Drawing.Color;
+using RedUtils.TrashTalk;
 
 namespace RedUtils
 {
@@ -153,12 +154,19 @@ namespace RedUtils
 			{
 				Action.Run(this); // execute it!
 
+				// trash talk code
+				TrashTalkController trash = new TrashTalkController(Action);
+				QuickChatSelection trashTalk = trash.TrashTalk();
+				if (!trashTalk.Equals(QuickChatSelection.Apologies_Sorry))
+					SendQuickChatFromAgent(teamOnly: false, quickChat: trashTalk);
+
 				// If the ball hasn't been touched, set it to -1, so we don't get errors.
 				float latestTouchTime = Ball.LatestTouch == null ? -1 : Ball.LatestTouch.Time; 
 				if (Action.Finished || (_lastTouchTime != latestTouchTime && Action.Interruptible) || Me.IsDemolished) 
 				{
 					// If the action has completed, or the ball has been touched and the action is interruptible,
 					// or if our bot is demolished reset the action
+					SendQuickChatFromAgent(teamOnly: false, quickChat: QuickChatSelection.Compliments_WhatASave);
 					_lastTouchTime = latestTouchTime;
 					Action = null;
 				}

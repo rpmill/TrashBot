@@ -4,19 +4,19 @@ using System.Drawing;
 using RedUtils;
 using RedUtils.Math;
 /* 
- * This is the main file. It contains your bot class. Feel free to change the name!
- * An instance of this class will be created for each instance of your bot in the game.
- * Your bot derives from the "RedUtilsBot" class, contained in the Bot file inside the RedUtils project.
- * The run function listed below runs every tick, and should contain the custom strategy code (made by you!)
- * Right now though, it has a default ball chase strategy. Feel free to read up and use anything you like for your own strategy.
+* This is the main file. It contains your bot class. Feel free to change the name!
+* An instance of this class will be created for each instance of your bot in the game.
+* Your bot derives from the "RedUtilsBot" class, contained in the Bot file inside the RedUtils project.
+* The run function listed below runs every tick, and should contain the custom strategy code (made by you!)
+* Right now though, it has a default ball chase strategy. Feel free to read up and use anything you like for your own strategy.
 */
 namespace Bot
 {
     // Your bot class! :D
-    public class RedBot : RUBot
+    public class TrashBot : RUBot
     {
         // We want the constructor for our Bot to extend from RUBot, but feel free to add some other initialization in here as well.
-        public RedBot(string botName, int botTeam, int botIndex) : base(botName, botTeam, botIndex) { }
+        public TrashBot(string botName, int botTeam, int botIndex) : base(botName, botTeam, botIndex) { }
 
         // Runs every tick. Should be used to find an Action to execute
         public override void Run()
