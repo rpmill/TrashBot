@@ -22,8 +22,9 @@ namespace Bot
         public override void Run()
         {
             // Prints out the current action to the screen, so we know what our bot is doing
-            Renderer.Text2D(Action != null ? Action.ToString() : "", new Vec3(10, 10), 4, Color.White);
-
+      //      Renderer.Text2D(Action != null ? Action.ToString() : "", new Vec3(10, 10), 4, Color.White);
+            Renderer.Text2D($"Bot Goals: {Me.Goals.ToString()}  Bot Saves: {Me.Saves.ToString()}  Bot isDemolished: {Me.IsDemolished.ToString()}", new Vec3(30, 15), 1, Color.White);
+            
             if (IsKickoff && Action == null)
             {
                 bool goingForKickoff = true; // by default, go for kickoff
@@ -43,6 +44,12 @@ namespace Bot
                 // if a shot is found, go for the shot. Otherwise, if there is an Action to execute, execute it. If none of the others apply, drive back to goal.
                 Action = shot ?? Action ?? new Drive(Me, OurGoal.Location);
 			}
+        }
+
+        public void TrashTalk()
+        {
+            int _trashTalkMessage = trash.TrashTalk();
+            SendQuickChatFromAgent(teamOnly: false, quickChat: (rlbot.flat.QuickChatSelection)_trashTalkMessage);
         }
     }
 }

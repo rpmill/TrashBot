@@ -78,7 +78,8 @@ namespace RedUtils
 		private float _lastTime = 0;
 
 		/// <summary>The controller used for implementing the trash talking. </summary>
-		TrashTalkController trash = new TrashTalkController();
+		public TrashTalkController trash = new TrashTalkController();
+		
 		//a
 		public RUBot(string botName, int botTeam, int botIndex) : base(botName, botTeam, botIndex)
 		{
@@ -92,6 +93,7 @@ namespace RedUtils
 			Renderer = new ExtendedRenderer(base.Renderer);
 			Field.Initialize(GetFieldInfo());
 			Cars.Initialize(packet);
+			trash.Initialize(Team, Me);
 			_ready = true;
 		}
 
@@ -114,7 +116,9 @@ namespace RedUtils
 			// Updates the game's score, time, etc
 			Game.Update(packet);
 			// Updates the boost pads
-			Field.Update(packet); 
+			Field.Update(packet);
+			// Updates the TrashTalkController instance
+			trash.Update(Me);
 
 			if (!IsKickoff && Game.IsKickoffPause && Game.IsRoundActive)
 			{
@@ -149,7 +153,7 @@ namespace RedUtils
 			Process(packet);
 
 			// Runs our strategy code
-			Run(); 
+			Run();
 
 			// if there is an action to execute...
 			if (Action != null)
@@ -168,9 +172,9 @@ namespace RedUtils
 			}
 
 			// put the trashtalk stuff here
-			int trashTalk = trash.TrashTalk(Action, Me, TheirScore);
-			if (trashTalk < 99)
-				SendQuickChatFromAgent(teamOnly: false, quickChat: (QuickChatSelection)trashTalk);
+			//int trashTalkMessage = trash.TrashTalk();
+			//if (trashTalkMessage < 99)
+			//	SendQuickChatFromAgent(teamOnly: false, quickChat: (QuickChatSelection)trashTalkMessage);
 
 			UpdateDeltaTime();
 
