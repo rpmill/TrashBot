@@ -80,6 +80,7 @@ namespace RedUtils.TrashTalk
             Team = team;
             Me = me;
             UpdateScores();
+            UpdateFlags();
         }
 
         private int GetTrashTalk()
@@ -141,6 +142,28 @@ namespace RedUtils.TrashTalk
         {
             DemoCounter += 1;
             Demoed = true;
+        }
+
+        public string GetProp(int prop)
+        {
+            string output = "";
+
+            if (prop == 0)
+            {
+                output = BotScored.ToString();
+            }
+
+            if (prop == 1)
+            {
+                output = DemoCounter.ToString();
+            }
+
+            if (prop == 2)
+            {
+                output = Demoed.ToString();
+            }
+
+            return output;
         }
     }
 }
