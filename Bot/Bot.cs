@@ -24,7 +24,7 @@ namespace Bot
             // Prints out the current action to the screen, so we know what our bot is doing
       //      Renderer.Text2D(Action != null ? Action.ToString() : "", new Vec3(10, 10), 4, Color.White);
             Renderer.Text2D($"Bot Goals: {Me.Goals.ToString()}  Bot Saves: {Me.Saves.ToString()}  Bot isDemolished: {Me.IsDemolished.ToString()}", new Vec3(30, 15), 1, Color.White);
-            Renderer.Text2D($"BotScored: {trash.GetProp(0)}  DemoCounter: {trash.GetProp(1)}  Demoed: {trash.GetProp(2)}", new Vec3(30, 30), 1, Color.White);
+            Renderer.Text2D($"BotScored: {trash.GetProp(0)}  DemoCounter: {trash.GetProp(1)}  Demoed: {trash.GetProp(2)}  WeScored: {trash.GetProp(4)}  TheyScored: {trash.GetProp(5)}  OurScore: {trash.GetProp(6)}  TheirScore: {trash.GetProp(7)}UpdateTicker: {trash.GetProp(3)}", new Vec3(30, 30), 1, Color.White);
 
             if (IsKickoff && Action == null)
             {

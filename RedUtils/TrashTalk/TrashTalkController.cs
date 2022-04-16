@@ -20,6 +20,9 @@ namespace RedUtils.TrashTalk
         private int DemoCounter { get; set; }
         private bool Demoed { get; set; }
 
+        // debug props
+        private double UpdateTicker { get; set; }
+
         public TrashTalkController()
         {
         }
@@ -81,6 +84,9 @@ namespace RedUtils.TrashTalk
             Me = me;
             UpdateScores();
             UpdateFlags();
+
+            // debug
+            UpdateTicker = 0.00;
         }
 
         private int GetTrashTalk()
@@ -112,6 +118,9 @@ namespace RedUtils.TrashTalk
             Me = me;
 
             // update Toxcicity
+
+            // debug
+            UpdateTicker += 0.01;
         }
 
         private void UpdateScores()
@@ -148,19 +157,32 @@ namespace RedUtils.TrashTalk
         {
             string output = "";
 
-            if (prop == 0)
+            switch (prop)
             {
-                output = BotScored.ToString();
-            }
-
-            if (prop == 1)
-            {
-                output = DemoCounter.ToString();
-            }
-
-            if (prop == 2)
-            {
-                output = Demoed.ToString();
+                case 0:
+                    output =  BotScored.ToString();
+                    break;
+                case 1:
+                    output = DemoCounter.ToString();
+                    break;
+                case 2:
+                    output = Demoed.ToString();
+                    break;
+                case 3:
+                    output = UpdateTicker.ToString();
+                    break;
+                case 4:
+                    output = WeScored.ToString();
+                    break;
+                case 5:
+                    output = TheyScored.ToString();
+                    break;
+                case 6:
+                    output = OurScore.ToString();
+                    break;
+                case 7:
+                    output = TheirScore.ToString();
+                    break;
             }
 
             return output;

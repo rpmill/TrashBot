@@ -117,6 +117,7 @@ namespace RedUtils
 			Game.Update(packet);
 			// Updates the boost pads
 			Field.Update(packet);
+
 			// Updates the TrashTalkController instance
 			trash.Update(Me);
 
@@ -150,7 +151,7 @@ namespace RedUtils
 				GetReady(packet); 
 			}
 			// Proccesses the packet so that data is up to date during this frame
-			Process(packet);
+			Process(packet);		
 
 			// Runs our strategy code
 			Run();
@@ -170,11 +171,6 @@ namespace RedUtils
 					Action = null;
 				}
 			}
-
-			// put the trashtalk stuff here
-			//int trashTalkMessage = trash.TrashTalk();
-			//if (trashTalkMessage < 99)
-			//	SendQuickChatFromAgent(teamOnly: false, quickChat: (QuickChatSelection)trashTalkMessage);
 
 			UpdateDeltaTime();
 
